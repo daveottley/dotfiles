@@ -1,0 +1,3 @@
+function shutdown() {
+  /usr/bin/poweroff
+}

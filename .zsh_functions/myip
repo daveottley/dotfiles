@@ -1,0 +1,4 @@
+function myip() {
+  echo "External: $(curl -s https://ifconfig.me)"
+  echo "Interal: $(ip addr show enp2s0 | grep 'inet ' | awk '{ print $2 }')"
+}

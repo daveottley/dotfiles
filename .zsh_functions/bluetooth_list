@@ -1,0 +1,8 @@
+bluetooth_list() {
+  bluetoothctl devices | while read -r line; do
+    MAC=$(echo $line | awk '{print $2}')
+    if bluetoothctl info "$MAC" | grep -q "Trusted: yes"; then
+      echo "$line"
+    fi
+  done
+}

@@ -1,0 +1,3 @@
+function killport() {
+  sudo kill -9 "$(lsof -t -i :"$1" 2>/dev/null)" 2>/dev/null
+}

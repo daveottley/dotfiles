@@ -1,0 +1,14 @@
+# Editor and Pager Settings
+export VISUAL="nvim"
+export EDITOR="nvim"
+export PAGER="nvim -R -"
+export MANPAGER="nvim +Man! -"
+
+typeset -gix export HISTORY_COMMAND_MAX_LENGTH=120
+
+# Git keeps its own setting as well
+git config --global core.pager "$PAGER"
+
+# cligpt
+export GPT_HOME="/home/daveottley/github/cligpt"
+

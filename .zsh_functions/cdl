@@ -1,0 +1,10 @@
+function cdl() {
+  if [ -z "$1" ]; then
+    cd /home/$USER || return
+  else
+    cd "$1" || return
+  fi
+
+  ls -CF
+}
+

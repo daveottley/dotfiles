@@ -1,0 +1,20 @@
+#!/usr/bin/local/zsh
+
+history.del() {
+  local histfile=${HISTFILE:-~/.zsh_history}
+  local n cmd pattern
+  
+  for n in "$@"; do
+    # Grab the exact text of event $n (no leading numbers)
+    cmd=$(fc -ln "$n" "$n") || continue
+
+    # Escape '|' so we can use it as the sed delimiter
+    pattern=${cmd//|/\\|}
+
+    # Delete the line ending in ;command-text
+    sed -i "\|;${pattern}\$|d" "$histfile"
+  done
+
+  # Replace this shell with a fresh zsh, reloading the cleaned history
+  exec zsh
+}

@@ -1,0 +1,16 @@
+# Print the N longest history commands (default 10)
+history.longest() {
+  local n=${1:-10}                              # how many lines to show
+  local file=${HISTFILE:-$HOME/.zsh_history}    # fall-back if HISTFILE unset
+
+  LC_ALL=C awk -v N="$n" -F';' '
+    {
+      # pick field-2 when EXTENDED_HISTORY is on, else whole line
+      cmd = ($0 ~ /^:/ && NF>1) ? $2 : $0
+      len = length(cmd)
+      print len "\t" cmd                        # "len <tab> command"
+    }
+  ' "$file" |
+  sort -nrk1 | head -n "$n" |                   # keep the N biggest
+  awk -F'\t' '{ printf "%5d | %s\n", $1, $2 }'  # nice formatting
+}

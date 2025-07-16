@@ -1,0 +1,84 @@
+# Commonly used programs
+alias open='xdg-open' 			# Generic open
+alias chrome='google-chrome-beta'	# Web browser
+alias swaylock='swaylock -f -c 000000'	# Screen lock mechanism
+alias fetch='fastfetch'
+
+# CLIGPT aliases
+alias gotogpt="cd $GPT_HOME;clear;ls -al;git pull;"
+
+# alias gpt-repeat='tail -n 50 /home/daveottley/scripts/Learning-Python/cligpt/context.txt'
+
+# .zsh files are commonly edited
+alias rc='$EDITOR ~/.zshrc'
+alias als='$EDITOR ~/.zsh_aliases'
+alias exports='$EDITOR ~/.zsh_exports'
+alias func='$EDITOR ~/.zsh_functions' 
+alias prof='$EDITOR ~/.zprofile'
+alias hyprconf='$EDITOR ~/.config/hypr/hyprland.conf'
+alias zreload='source ~/.zshrc'
+
+# File and Directory Management
+alias cls='clear'	 	# Clear the terminal (Windows-style)
+alias c='clear'			# Clear the screen
+alias cfetch='clear; fastfetch;'	# Clear the screen and neofetch
+alias cf='cfetch'
+alias cl='clear; ls'		# Clear and list short
+alias cll='clear; ls -alF'	# Clear and list long
+alias cla='clear; ls -A'	# Clear and list all
+alias ll='ls -alF'		# Detailed list with file types
+alias la='ls -A'		# List all files except . and ..
+alias l='ls -CF'		# Compact list with file types
+alias llr='ls -alRF'		# Detailed recursive file list
+alias ..='cd ..'		# Go up one directory
+alias ...='cd ../..'		# Go up two directories
+alias mkd='mkdir -p'		# Create a directory and its parents
+alias rmd='rm -r'		# Remove directories recursively
+
+# System Monitoring and Management
+alias dfh='df -h'           # Disk usage in human-readable format
+alias duh='du -h'           # Directory size in human-readable format
+alias free='free -m'        # Memory usage in MB
+alias top='htop'            # Use htop instead of top
+alias pstree='ps auxf'      # Process tree
+alias reload='source ~/.zshrc' # Reload zsh configuration
+
+# Git Workflow
+alias gs='git status'       # Show git status
+alias ga='git add'          # Add files to staging
+alias gc='git commit -m'    # Commit with a message
+alias gp='git push'         # Push changes
+alias gpl='git pull'        # Pull changes
+alias gl='git log --oneline --graph --decorate' # Git log visualization
+
+# Networking
+alias ports='netstat -tulanp' # Show listening ports
+alias ping='ping -c 3'        # Ping 5 times
+alias wget='wget -c'          # Resume downloads with wget
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -' # Run speedtest
+
+# Development Utilities
+alias python='python3'           # Use Python 3 by default
+alias pip='pip3'                 # Use pip3 by default
+alias venv='python3 -m venv'     # Shortcut for creating virtual environments
+alias serve='python3 -m http.server 8000' # Start a local HTTP server
+
+# Other / General Purpose
+alias grep='grep --color=auto'		# Highlight matches in grep
+alias hist='history'			# Show command history
+alias backup='tar -czvf backup.tar.gz'	# Create compressed backups
+
+# SSH Login shortcuts
+alias pi.hole='ssh daveottley@pi.hole'
+alias pi.hole2='ssh daveottley@pi.hole2'
+alias pi4-1='ssh daveottley@pi4-1'
+alias pi5-2='ssh daveottley@pi5-2'
+alias nas='ssh -p 6274 daveottley@nas'
+alias router='ssh root@router'
+alias core-switch='ssh daveottley@core-switch'
+alias desktop='ssh daveottley@desktop'
+alias kim-arch='ssh hieu@kim-arch'
+alias dave-arch='ssh daveottley@dave-arch'
+alias laptop='ssh daveottley@laptop'
+alias nook='ssh daveottley@nook'
+alias web='ssh daveottley@daveottley.com'

@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	email = personal@daveottley.com
+	name = Dave Ottley
+[core]
+	pager = nvim -R -

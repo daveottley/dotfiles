@@ -1,0 +1,3 @@
+function reboot() {
+  /usr/bin/reboot
+}
