@@ -11,4 +11,3 @@ git config --global core.pager "$PAGER"
 
 # cligpt
 export GPT_HOME="/home/daveottley/github/cligpt"
-
