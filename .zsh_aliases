@@ -15,7 +15,7 @@ alias todo="$EDITOR ~/todo.md; cd ~/github/notes; git add .; git commit -m 'Edit
 alias rc="$EDITOR ~/.zshrc; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zshrc'; git push;"
 alias als="$EDITOR ~/.zsh_aliases; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
 alias exports="$EDITOR ~/.zsh_exports; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
-alias secrets="$EDITOR ~/.zsh_secrets; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
+alias secrets="$EDITOR ~/.zsh_secrets;"
 alias func="$EDITOR ~/.zsh_functions; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
 alias zreload="source ~/.zshrc"
 
