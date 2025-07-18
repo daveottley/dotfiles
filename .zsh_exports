@@ -10,4 +10,4 @@ typeset -gix export HISTORY_COMMAND_MAX_LENGTH=120
 git config --global core.pager "$PAGER"
 
 # cligpt
-export GPT_HOME="/home/daveottley/github/cligpt"
+export GPT_HOME="/home/$(whoami)/github/cligpt"
