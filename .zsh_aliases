@@ -9,14 +9,14 @@ alias gpt-todo="$EDITOR $GPT_HOME/todo.md"
 alias gpt-repeat="tail -n 50 $GPT_HOME/context.txt"
 
 # General files: Edit and push to github
-alias todo="$EDITOR ~/todo.md; cd ~/github/notes; git add .; git commit -m 'Edit todo items'; git push;"
+alias todo="cd ~/github/notes; git pull; $EDITOR ~/todo.md; git add .; git commit -m 'Edit todo items'; git push;"
 
-# .zsh files: Edit and push to github
-alias rc="$EDITOR ~/.zshrc; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zshrc'; git push;"
-alias als="$EDITOR ~/.zsh_aliases; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
-alias exports="$EDITOR ~/.zsh_exports; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
+# .zsh files: Pull, edit, and push to github
+alias rc="cd ~/github/dotfiles; $EDITOR .zshrc; git add .; git commit -m 'Edit .zshrc'; git push;"
+alias als="cd ~/github/dotfiles; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
+alias exports="cd ~/github/dotfiles; $EDITOR ~/.zsh_exports; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
 alias secrets="$EDITOR ~/.zsh_secrets;"
-alias func="$EDITOR ~/.zsh_functions; cd ~/github/dotfiles; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
+alias func="cd ~/github/dotfiles; $EDITOR ~/.zsh_functions; git add .; git commit -m 'Edit .zsh_aliases'; git push;"
 alias zreload="source ~/.zshrc"
 
 # File and Directory Management
