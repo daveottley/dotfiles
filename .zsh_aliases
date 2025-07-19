@@ -8,7 +8,7 @@ alias fetch="fastfetch"
 alias gotogpt="cd $GPT_HOME;clear;ls -al;git pull;"
 alias gpt-todo="$EDITOR $GPT_HOME/todo.md"
 alias gpt-repeat="tail -n 50 $GPT_HOME/context.txt"
-alias gpt-context="$EDITOR $GPT_HOME/context.txt"
+alias gpt-context="view $GPT_HOME/context.txt"
 
 # General files: Edit and push to github
 alias todo="cd ~/github/notes; git pull; $EDITOR ~/todo.md; git add .; git commit -m 'Edit todo items'; git push; cd -"
