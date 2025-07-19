@@ -5,3 +5,5 @@
 	name = Dave Ottley
 [core]
 	pager = nvim -R -
+[pull]
+	rebase = true
