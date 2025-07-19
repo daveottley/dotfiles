@@ -1,7 +1,8 @@
 # Commonly used programs
-alias open='xdg-open' 			# Generic open
-alias chrome='google-chrome-beta'	# Web browser
-alias fetch='fastfetch'
+alias open="xdg-open" 			# Generic open
+alias view="nvim -M"        # Very strict RO
+alias chrome="google-chrome-beta"	# Web browser
+alias fetch="fastfetch"
 
 # cliGPT aliases
 alias gotogpt="cd $GPT_HOME;clear;ls -al;git pull;"
