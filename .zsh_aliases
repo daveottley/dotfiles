@@ -6,7 +6,7 @@ alias fetch="fastfetch"
 
 # cliGPT aliases
 alias gotogpt="cd $GPT_HOME;clear;ls -al;git pull;"
-alias gpt-todo="$EDITOR $GPT_HOME/todo.md"
+alias gpt-todo="cd $GPT_HOME; git pull; $EDITOR $GPT_HOME/todo.md; git add .; git commit -m 'Edit cligpt todo items'; git push; cd -"
 alias gpt-repeat="tail -n 50 $GPT_HOME/context.txt"
 alias gpt-context="view $GPT_HOME/context.txt"
 
@@ -14,11 +14,11 @@ alias gpt-context="view $GPT_HOME/context.txt"
 alias todo="cd ~/github/notes; git pull; $EDITOR ~/todo.md; git add .; git commit -m 'Edit todo items'; git push; cd -"
 
 # .zsh files: Pull, edit, and push to github
-alias rc="cd ~/github/dotfiles; $EDITOR .zshrc; git add .; git commit -m 'Edit .zshrc'; git push; cd -"
-alias als="cd ~/github/dotfiles; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
-alias exports="cd ~/github/dotfiles; $EDITOR ~/.zsh_exports; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
+alias rc="cd ~/github/dotfiles; git pull; $EDITOR .zshrc; git add .; git commit -m 'Edit .zshrc'; git push; cd -"
+alias als="cd ~/github/dotfiles; git pull; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
+alias exports="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_exports; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
 alias secrets="$EDITOR ~/.zsh_secrets"
-alias func="cd ~/github/dotfiles; $EDITOR ~/.zsh_functions; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
+alias func="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_functions; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
 alias zreload="source ~/.zshrc"
 
 # File and Directory Management
