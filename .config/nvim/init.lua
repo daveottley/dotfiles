@@ -2,9 +2,9 @@
 -------------------------------------------------------------------------------
 --- Allow color themes over SSH
 -------------------------------------------------------------------------------
-if vim.fn.has("termguicolors") == 1 then
-  vim.o.termguicolors = true
-end
+-- if vim.fn.has("termguicolors") == 1 then
+--   vim.o.termguicolors = true
+-- end
 
 -------------------------------------------------------------------------------
 --- Plugin Manager (Lazy.nvim)
