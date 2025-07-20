@@ -1,5 +1,29 @@
 -- init.lua
 -------------------------------------------------------------------------------
+--- Plugin Manager (Lazy.nvim)
+-------------------------------------------------------------------------------
+-- Bootstrap the plugin
+local lazypath = vim.fun.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git", lazypath
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Create a table with plugins and call lazy.setup
+require("lazy").setup({
+  -- Core plugins
+  { "nvim-lua/plenary.nvim" },
+
+  -- LSP
+  { "neovim/nvim-lspconfig" },
+
+  -- Add more plugins here as needed
+})
+
+-------------------------------------------------------------------------------
 --- Language Server Stuff
 -------------------------------------------------------------------------------
 -- Set python and perl host programs
@@ -16,6 +40,7 @@ local lspconfig = require('lspconfig')
 lspconfig.html.setup({
   -- on_attach/capabilities callbacks go here if  you already use them
 })
+
 
 -------------------------------------------------------------------------------
 --- Global indentation defaults
