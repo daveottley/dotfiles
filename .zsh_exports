@@ -9,5 +9,5 @@ typeset -gix export HISTORY_COMMAND_MAX_LENGTH=120
 # Git keeps its own setting as well
 git config --global core.pager "$PAGER"
 
-# cligpt
 export GPT_HOME="/home/$(whoami)/github/cligpt"
+export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-software-java-modules"
