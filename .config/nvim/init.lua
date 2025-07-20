@@ -1,12 +1,5 @@
 -- init.lua
 -------------------------------------------------------------------------------
---- Allow color themes over SSH
--------------------------------------------------------------------------------
--- if vim.fn.has("termguicolors") == 1 then
---   vim.o.termguicolors = true
--- end
-
--------------------------------------------------------------------------------
 --- Plugin Manager (Lazy.nvim)
 -------------------------------------------------------------------------------
 -- Bootstrap the plugin
@@ -27,8 +20,27 @@ require("lazy").setup({
   -- LSP
   { "neovim/nvim-lspconfig" },
 
-  -- Add more plugins here as needed
+  -- Color Scheme
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
+
+-------------------------------------------------------------------------------
+--- Color Scheme
+-------------------------------------------------------------------------------
+require("catppuccin").setup({
+  flavour = "mocha",                      -- latte | frappe | macchiato | mocha
+  transparent_background = true,          -- let the terminal show through
+  term_colors = true,                     -- match :terminal palette
+  integrations  = {
+    cmp         = true,
+    gitsigns    = true,
+    treesitter  = true,
+    -- add or remove integrations as you like
+  },
+})
+
+vim.cmd.colorscheme("catppuccin")
+
 
 -------------------------------------------------------------------------------
 --- Language Server Stuff
