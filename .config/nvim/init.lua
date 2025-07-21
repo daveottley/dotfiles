@@ -148,7 +148,7 @@ require("lazy").setup({
       ensure_installed = {
         "ansiblels",
         "asm_lsp",
-        "awk_lsp",
+        "awk_ls",
         "bashls",
         "cmake",
         "cssls",
@@ -181,7 +181,7 @@ require("lazy").setup({
       lspconfig.clangd.setup({})
       lspconfig.ansiblels.setup({})
       lspconfig.asm_lsp.setup({})
-      lspconfig.awk_lsp.setup({})
+      lspconfig.awk_ls.setup({})
       lspconfig.bashls.setup({})
       lspconfig.cmake.setup({})
       lspconfig.cssls.setup({})
