@@ -2,12 +2,12 @@
 -------------------------------------------------------------------------------
 --- Global indentation defaults
 -------------------------------------------------------------------------------
-vim.o.expandtab		= true 	-- use spaaces, never literal <Tab>s
-vim.o.tabstop		= 2	      -- how many columns a typed <Tab> counts for
-vim.o.softtabstop	= 2	    -- how many columns <BS>/<Tab> use in Insert mode
-vim.o.shiftwidth 	= 2	    -- size of >, <. ==, >>, <<., == operations
-vim.o.smartindent	= true	-- keep indent when wrapping lines
-vim.o.breakindent = true  -- Indent line breaks
+vim.opt.expandtab		= true 	-- use spaaces, never literal <Tab>s
+vim.opt.tabstop		= 2	      -- how many columns a typed <Tab> counts for
+vim.opt.softtabstop	= 2	    -- how many columns <BS>/<Tab> use in Insert mode
+vim.opt.shiftwidth 	= 2	    -- size of >, <. ==, >>, <<., == operations
+vim.opt.smartindent	= true	-- keep indent when wrapping lines
+vim.opt.breakindent = true  -- Indent line breaks
 
 -------------------------------------------------------------------------------
 --- Default configuration
@@ -24,59 +24,59 @@ vim.g.mapleader = ' '
 -- (Note the single quotes)
 
 -- Keep undo records
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
-vim.o.updatetime = 250
+vim.opt.updatetime = 250
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Enable mouse mode, can be useful for resizing splits
-vim.o.mouse = "a"
+vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in the status line (mini.statusline)
-vim.o.showmode = false
+vim.opt.showmode = false
 
 -- Print the line number in front of each line
-vim.o.number = true
+vim.opt.number = true
 
 -- Use relative line numbers, so that it is easier to jump with j, k. This will affect the 'number'
 -- option above, see `:h number_relativenumber`
-vim.o.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
 -- See `:help 'clipboard'`
 vim.api.nvim_create_autocmd('UIEnter', {
   callback = function()
-    vim.o.clipboard = 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
   end,
 })
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Highlight the line where the cursor is on
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 20
+vim.opt.scrolloff = 20
 
 -- Disable commandline until it is needed. This gives us a cleaner look and an extra line
-vim.o.cmdheight = 0
+vim.opt.cmdheight = 0
 
 -- Show <tab> and trailing spaces
-vim.o.list = true
-vim.o.listchars = { tab = "» ", trail = ".", nbsp = "␣" }
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = ".", nbsp = "␣" }
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
-vim.o.confirm = true
+vim.opt.confirm = true
 
 -- [[ Set up keymaps ]] See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
 
@@ -261,4 +261,10 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
+
+-- Opaque number and sign columns
+local opaque_bg = "#1e1e1e"
+vim.api.nvim_set_hl(0, 'SignColumn',    { bg = opaque_bg })
+vim.api.nvim_set_hl(0, 'LineNr',        { bg = opaque_bg })
+vim.api.nvim_set_hl(0, 'CursorLineNr',  { bg = opaque_bg, bold = true })
 
