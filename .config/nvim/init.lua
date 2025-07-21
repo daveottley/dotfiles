@@ -1,67 +1,5 @@
 -- init.lua
 -------------------------------------------------------------------------------
---- Plugin Manager (Lazy.nvim)
--------------------------------------------------------------------------------
--- Bootstrap the plugin
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git", "clone", "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git", lazypath
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Create a table with plugins and call lazy.setup
-require("lazy").setup({
-  -- Core plugins
-  { "nvim-lua/plenary.nvim" },
-
-  -- LSP
-  { "neovim/nvim-lspconfig" },
-
-  -- Color Scheme
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-})
-
--------------------------------------------------------------------------------
---- Color Scheme
--------------------------------------------------------------------------------
-require("catppuccin").setup({
-  flavour = "mocha",                      -- latte | frappe | macchiato | mocha
-  transparent_background = true,          -- let the terminal show through
-  term_colors = true,                     -- match :terminal palette
-  integrations  = {
-    cmp         = true,
-    gitsigns    = true,
-    treesitter  = true,
-    -- add or remove integrations as you like
-  },
-})
-
-vim.cmd.colorscheme("catppuccin")
-
-
--------------------------------------------------------------------------------
---- Language Server Stuff
--------------------------------------------------------------------------------
--- Set python and perl host programs
-vim.g.python3_host_prog			= '/usr/bin/python3'
-vim.g.perl_host_prog			= '/usr/bin/perl'
-
--- Uncomment any providers you don't need
--- vim.g.loaded_perl_provider		= 0
-vim.g.loaded_ruby_provider		= 0
--- vim.g.loaded_python3_provider	= 0
-
-local lspconfig = require('lspconfig')
-
-lspconfig.html.setup({
-  -- on_attach/capabilities callbacks go here if  you already use them
-})
-
-
--------------------------------------------------------------------------------
 --- Global indentation defaults
 -------------------------------------------------------------------------------
 vim.o.expandtab		= true 	-- use spaaces, never literal <Tab>s
@@ -162,3 +100,133 @@ end, { desc = 'Print the git blame for the current line' })
 -- For example, to add the "nohlsearch" package to automatically turn off search highlighting after
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
+
+
+-------------------------------------------------------------------------------
+--- Host Language Programs
+-------------------------------------------------------------------------------
+-- Set python and perl host programs
+vim.g.python3_host_prog			= '/usr/bin/python3'
+vim.g.perl_host_prog			= '/usr/bin/perl'
+
+-- Uncomment any providers you don't need
+-- vim.g.loaded_perl_provider		= 0
+vim.g.loaded_ruby_provider		= 0
+-- vim.g.loaded_python3_provider	= 0
+
+
+-------------------------------------------------------------------------------
+--- Plugin Manager (Lazy.nvim)
+-------------------------------------------------------------------------------
+-- Bootstrap the plugin
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git", lazypath
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Create a table with plugins and call lazy.setup
+require("lazy").setup({
+  -- Core plugins
+  { "nvim-lua/plenary.nvim" },
+
+  -- Mason core
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",  -- lazy-load on :Mason commands
+    opts = {},      -- use defaults, or override UI/settings here
+  },
+
+  -- Mason <-> LSPConfig integration
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "ansiblels",
+        "asm_lsp",
+        "awk_lsp",
+        "bashls",
+        "cmake",
+        "cssls",
+        "css_variables",
+        "cssmodules_ls",
+        "html",
+        "java_language_server",
+        "jinja_lsp",
+        "jsonls",
+        "julials",
+        "lua_ls",
+        "markdown_oxide",
+        "nginx_language_server",
+        "pylsp",
+        "systemd_ls",
+        "ts_ls",
+        "vimls",
+        "yamlls",
+      },
+      automatic_installation = true,
+    },
+  },
+
+  -- LSP configs
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    config = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.clangd.setup({})
+      lspconfig.ansiblels.setup({})
+      lspconfig.asm_lsp.setup({})
+      lspconfig.awk_lsp.setup({})
+      lspconfig.bashls.setup({})
+      lspconfig.cmake.setup({})
+      lspconfig.cssls.setup({})
+      lspconfig.css_variables.setup({})
+      lspconfig.cssmodules_ls.setup({})
+      lspconfig.html.setup({})
+      lspconfig.java_language_server.setup({})
+      lspconfig.jinja_lsp.setup({})
+      lspconfig.jsonls.setup({})
+      lspconfig.julials.setup({})
+      lspconfig.lua_ls.setup({})
+      lspconfig.markdown_oxide.setup({})
+      lspconfig.nginx_language_server.setup({})
+      lspconfig.pylsp.setup({})
+      lspconfig.systemd_ls.setup({})
+      lspconfig.ts_ls.setup({})
+      lspconfig.vimls.setup({})
+      lspconfig.yamlls.setup({})
+    end,
+  },
+
+  -- Color Scheme
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+})
+
+-------------------------------------------------------------------------------
+--- Mason UI Setup
+-------------------------------------------------------------------------------
+require("mason").setup({})
+
+
+-------------------------------------------------------------------------------
+--- Color Scheme
+-------------------------------------------------------------------------------
+require("catppuccin").setup({
+  flavour = "mocha",                      -- latte | frappe | macchiato | mocha
+  transparent_background = true,          -- let the terminal show through
+  term_colors = true,                     -- match :terminal palette
+  integrations  = {
+    cmp         = true,
+    gitsigns    = true,
+    treesitter  = true,
+    -- add or remove integrations as you like
+  },
+})
+
+vim.cmd.colorscheme("catppuccin")
+
