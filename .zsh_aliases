@@ -59,10 +59,11 @@ alias wget='wget -c'          # Resume downloads with wget
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -' # Run speedtest
 
 # Development Utilities
-alias python='python3'           # Use Python 3 by default
-alias pip='pip3'                 # Use pip3 by default
-alias venv='python3 -m venv'     # Shortcut for creating virtual environments
-alias serve='python3 -m http.server 8000' # Start a local HTTP server
+# alias python='python3'           # Use Python 3 by default
+# alias pip='pip3'                 # Use pip3 by default
+# alias serve='python -m http.server 8000' # Start a local HTTP server
+alias venv='python -m venv .venv'     # Shortcut for creating virtual environments
+alias live-server='npm live-server .' 
 
 # Other / General Purpose
 alias grep='grep --color=auto'		# Highlight matches in grep
