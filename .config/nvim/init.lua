@@ -136,6 +136,7 @@ require("lazy").setup({
   -- Mason core
   {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- keep registry up to date
     cmd = "Mason",  -- lazy-load on :Mason commands
     opts = {},      -- use defaults, or override UI/settings here
   },
@@ -143,7 +144,7 @@ require("lazy").setup({
   -- Mason <-> LSPConfig integration
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     opts = {
       ensure_installed = {
         "ansiblels",
