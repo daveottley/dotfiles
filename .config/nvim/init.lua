@@ -3,11 +3,11 @@
 --- Global indentation defaults
 -------------------------------------------------------------------------------
 vim.o.expandtab		= true 	-- use spaaces, never literal <Tab>s
-vim.o.tabstop		= 2	-- how many columns a typed <Tab> counts for
-vim.o.softtabstop	= 2	-- how many columns <BS>/<Tab> use in Insert mode
-vim.o.shiftwidth 	= 2	-- size of >, <. ==, >>, <<., == operations
+vim.o.tabstop		= 2	      -- how many columns a typed <Tab> counts for
+vim.o.softtabstop	= 2	    -- how many columns <BS>/<Tab> use in Insert mode
+vim.o.shiftwidth 	= 2	    -- size of >, <. ==, >>, <<., == operations
 vim.o.smartindent	= true	-- keep indent when wrapping lines
-
+vim.o.breakindent = true  -- Indent line breaks
 
 -------------------------------------------------------------------------------
 --- Default configuration
@@ -23,7 +23,23 @@ vim.g.mapleader = ' '
 -- To see documentation for an option, you can use `:h 'optionname'`, for example `:h 'number'`
 -- (Note the single quotes)
 
+-- Keep undo records
 vim.o.undofile = true
+
+-- Keep signcolumn on by default
+vim.o.signcolumn = "yes"
+
+vim.o.updatetime = 250
+
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- Enable mouse mode, can be useful for resizing splits
+vim.o.mouse = "a"
+
+-- Don't show the mode, since it's already in the status line (mini.statusline)
+vim.o.showmode = false
 
 -- Print the line number in front of each line
 vim.o.number = true
@@ -49,10 +65,14 @@ vim.o.smartcase = true
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 15
+vim.o.scrolloff = 20
+
+-- Disable commandline until it is needed. This gives us a cleaner look and an extra line
+vim.o.cmdheight = 0
 
 -- Show <tab> and trailing spaces
 vim.o.list = true
+vim.o.listchars = { tab = "» ", trail = ".", nbsp = "␣" }
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
