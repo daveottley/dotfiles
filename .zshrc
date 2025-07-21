@@ -34,11 +34,11 @@ done
 bindkey -v
 bindkey -M vicmd 'v' edit-command-line
 
-# Don't save gpt inquiries
-export HISTIGNORE="$HISTIGNORE:gpt*"
-
-# Uncomment if you don't want to save loong lines to history
+# veto certain commands before they are written to file
 zshaddhistory() {
-  # (( ${#1} > HISTORY_COMMAND_MAX_LENGTH )) && return 1	# veto long entries
-  return 0						# accept everything else
+  integer maxlen=${HISTORY_COMMAND_MAX_LENGTH:-500}
+
+  (( ${#1} > maxlen )) && return 1	# veto long entries
+  [[ $1 == 'gpt '* ]] && return 1   # veto gpt entries
+  return 0						              # accept everything else
 }
