@@ -12,3 +12,30 @@ git config --global core.pager "$PAGER"
 export GPT_HOME="/home/$(whoami)/github/cligpt"
 export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-software-java-modules"
 export DOT_HOME="/home/$(whoami)/github/dotfiles"
+
+# HELP AND USAGE DOCS
+export RG_HELP="Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
+
+1.  Project-wide code search:  rg PATTERN                       # blazing-fast grep
+2.  Edit from hits:           rg -n PAT | fzf | cut -d: -f1,2 | xargs nvim +
+3.  Ignore vendored deps:     rg PAT --glob '!{node_modules,target,venv}'
+4.  Live-reload search in nvim:  :Rg PATTERN via telescope/denite/fzf-lua
+5.  Search only tracked files: rg PAT $(git ls-files)
+6.  Extract TODOs/FIXMEs:     rg -n "TODO|FIXME" --no-heading
+7.  Replace matches:          rg -l PAT | xargs sed -i 's/PAT/NEW/g'
+8.  Diff helper:              rg -n --replace "$NEW" PAT | delta
+9.  Search compressed logs:   rg PAT -z /var/log/**/*.gz          # auto-gunzip
+10. JSON key/value grep:      rg '"status": *"error"' logs/*.json
+11. Benchmark grep vs. rg:    time rg PAT /usr/include > /dev/null
+12. Build ignore file:        rg --files > cscope.files           # speed tags
+13. Debug Makefiles:          rg -n '^\s*target:' **/Makefile*
+14. Find unused CSS:          rg -l "\.my-class" src | rg -L        # -L = no hit
+15. Binary search:            rg PAT --binary -n firmware.bin | hd
+16. Watch mode:               rg PAT -n --line-buffered | while read l; do ...; done
+17. Count matches only:       rg -c PAT src/ | sort -nr           # hotspots
+18. Detect secrets:           rg --passthru -n '[A-Za-z0-9_]{32,}'
+19. Quick file list:          rg --files | fzf                    # better than fd
+20. Ad-hoc linting:           rg -n '\s+$'                       # trailing spaces"
+export FZF_HELP=""
+export AWK_HELP=""
+export SED_HELP=""
