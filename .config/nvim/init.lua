@@ -268,3 +268,7 @@ vim.api.nvim_set_hl(0, 'SignColumn',    { bg = opaque_bg })
 vim.api.nvim_set_hl(0, 'LineNr',        { bg = opaque_bg })
 vim.api.nvim_set_hl(0, 'CursorLineNr',  { bg = opaque_bg, bold = true })
 
+-- Set 80/100 column lines with subtle color
+vim.opt.colorcolumn = { "80", }
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#303030" })
+
