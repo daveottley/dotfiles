@@ -41,6 +41,8 @@ EOF
 )"
 
 export FZF_HELP="$(cat << 'EOF'
+Top 20 fzf workflows, roughly most-to-least useful:
+
 1. Bash/zsh Ctrl-R: fuzzy-search shell history, hit Enter to rerun any cmd.
 2. Ctrl-T file finder: **fzf-file-completion** to insert files/dirs in the cmdline.
 3. **nvim Telescope/fzf.vim**: jump to files, buffers, lines, git status, etc.
@@ -65,6 +67,8 @@ EOF
 )"
 
 export AWK_HELP="$(cat << 'EOF'
+Top 20 awk workflows, roughly most-to-least useful:
+
 1. Quick column grabber:  awk "{print $2}" file # like cut -f2
 2. Sum numbers:          awk "{s+=$3} END{print s}" data.tsv
 3. Filter rows:          awk "$4>100 && /SUCCESS/" log.csv
