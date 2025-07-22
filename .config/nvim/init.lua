@@ -154,7 +154,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Core plugins
   { "nvim-lua/plenary.nvim" },
-
+  { "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = 'main',
+    build = ':TSUpdate'
+  },
   -- Mason core
   {
     "williamboman/mason.nvim",
@@ -173,10 +177,14 @@ require("lazy").setup({
         "asm_lsp",
         "awk_ls",
         "bashls",
+        "clangd",
         "cmake",
+        "csharp_ls",
         "cssls",
         "css_variables",
         "cssmodules_ls",
+        "fish_lsp",
+        "gopls",
         "html",
         "java_language_server",
         "jinja_lsp",
@@ -186,6 +194,7 @@ require("lazy").setup({
         "markdown_oxide",
         "nginx_language_server",
         "pylsp",
+        "sqls",
         "systemd_ls",
         "ts_ls",
         "vimls",
@@ -232,6 +241,63 @@ require("lazy").setup({
   -- Mini.statusline
   { "echasnovski/mini.statusline", version = false, opts = {} }
 })
+
+-------------------------------------------------------------------------------
+--- Install required parsers
+-------------------------------------------------------------------------------
+require("nvim-treesitter").install({
+        "asm",
+        "awk",
+        "bash",
+        "c",
+        "c_sharp",
+        "cmake",
+        "cpp",
+        "css",
+        "csv",
+        "cuda",
+        "diff",
+        "fish",
+        "git_config",
+        "git_rebase",
+        "gitcommit",
+        "gitignore",
+        "go",
+        "html",
+        "java",
+        "javascript",
+        "jinja",
+        "json",
+        "julia",
+        "lua",
+        "luadoc",
+        "markdown",
+        "nginx",
+        "python",
+        "regex",
+        "sql",
+        "toml",
+        "typescript",
+        "udev",
+        "vim",
+        "vimdoc",
+        "yaml",
+        "zig",
+})
+
+-------------------------------------------------------------------------------
+--- Treesitter features
+-------------------------------------------------------------------------------
+--- Folding
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+--- Indentation
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+--- Highlighting
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
+
 
 -------------------------------------------------------------------------------
 --- Mason UI Setup
