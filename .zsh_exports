@@ -14,7 +14,8 @@ export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-softw
 export DOT_HOME="/home/$(whoami)/github/dotfiles"
 
 # HELP AND USAGE DOCS
-export RG_HELP='Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
+export RG_HELP="$(cat << 'EOF'
+Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
 
 1.  Project-wide code search:  rg PATTERN                       # blazing-fast grep
 2.  Edit from hits:           rg -n PAT | fzf | cut -d: -f1,2 | xargs nvim +
@@ -35,9 +36,12 @@ export RG_HELP='Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
 17. Count matches only:       rg -c PAT src/ | sort -nr           # hotspots
 18. Detect secrets:           rg --passthru -n "[A-Za-z0-9_]{32,}"
 19. Quick file list:          rg --files | fzf                    # better than fd
-20. Ad-hoc linting:           rg -n "\s+$"                       # trailing spaces'
+20. Ad-hoc linting:           rg -n "\s+$"                       # trailing spaces
+EOF
+)"
 
-export FZF_HELP='1. Bash/zsh Ctrl-R: fuzzy-search shell history, hit Enter to rerun any cmd.
+export FZF_HELP="$(cat << 'EOF'
+1. Bash/zsh Ctrl-R: fuzzy-search shell history, hit Enter to rerun any cmd.
 2. Ctrl-T file finder: **fzf-file-completion** to insert files/dirs in the cmdline.
 3. **nvim Telescope/fzf.vim**: jump to files, buffers, lines, git status, etc.
 4. Git workflow: `git ls-files | fzf` to open/checkout/stage chosen paths.
@@ -56,7 +60,9 @@ export FZF_HELP='1. Bash/zsh Ctrl-R: fuzzy-search shell history, hit Enter to re
 17. Emoji picker: `cat ~/.emojis | fzf | tr -d "\n" | xclip -sel c`.
 18. PDF opener: `fd -e pdf | fzf --preview "pdftotext {} - | head -40" | xdg-open`.
 19. Tmux session switch: `tmux list-sessions -F "#S" | fzf | xargs tmux switch`.
-20. HTTP status cheat: `curl -s https://httpstatuses.com | pup "h2 text{}" | fzf`.'
+20. HTTP status cheat: `curl -s https://httpstatuses.com | pup "h2 text{}" | fzf`.
+EOF
+)"
 
 export AWK_HELP='1. Quick column grabber:  awk "{print $2}" file # like cut -f2
 2. Sum numbers:          awk "{s+=$3} END{print s}" data.tsv
