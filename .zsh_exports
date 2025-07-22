@@ -36,6 +36,44 @@ export RG_HELP="Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
 18. Detect secrets:           rg --passthru -n '[A-Za-z0-9_]{32,}'
 19. Quick file list:          rg --files | fzf                    # better than fd
 20. Ad-hoc linting:           rg -n '\s+$'                       # trailing spaces"
-export FZF_HELP=""
-export AWK_HELP=""
+export FZF_HELP="1. Bash/zsh Ctrl-R: fuzzy-search shell history, hit Enter to rerun any cmd.
+2. Ctrl-T file finder: **fzf-file-completion** to insert files/dirs in the cmdline.
+3. **nvim Telescope/fzf.vim**: jump to files, buffers, lines, git status, etc.
+4. Git workflow: `git ls-files | fzf` to open/checkout/stage chosen paths.
+5. Process killer: `ps -ef | fzf --multi | awk '{print $2}' | xargs kill`.
+6. Apt/pacman helper: `pacman -Slq | fzf | sudo pacman -S $(cat)`.
+7. Env-var chooser: `print -l ${(k)parameters} | fzf` then `echo $REPLY`.
+8. SSH host picker: `cat ~/.ssh/config | grep '^Host' | fzf | ssh`.
+9. Ripgrep integration: `rg --line-number '' | fzf +s | nvim +{2} {1}`.
+10. Clipboard search: `xclip -o -sel c | fzf` to recall old copies.
+11. Music chooser: `ls ~/Music/**/* | fzf --preview 'mpg123 {}'`.
+12. Dotfile navigator: `git --git-dir=$HOME/.dotfiles/ls-tree -r HEAD | fzf`.
+13. Kubernetes pod exec: `kubectl get pods | fzf | xargs -I {} kubectl exec -it {}`.
+14. Browser bookmarks: `jq -r '..|.url? //empty' bookmarks.json | fzf`.
+15. Journal grep: `rg '' ~/notes | fzf --preview 'bat --style=numbers {}'`.
+16. Command palette for scripts: `ls ~/bin | fzf | xargs -I {} {} "$@"`.
+17. Emoji picker: `cat ~/.emojis | fzf | tr -d '\n' | xclip -sel c`.
+18. PDF opener: `fd -e pdf | fzf --preview 'pdftotext {} - | head -40' | xdg-open`.
+19. Tmux session switch: `tmux list-sessions -F '#S' | fzf | xargs tmux switch`.
+20. HTTP status cheat: `curl -s https://httpstatuses.com | pup 'h2 text{}' | fzf`."
+export AWK_HELP="1. Quick column grabber:  awk '{print $2}' file          # like cut -f2
+2. Sum numbers:          awk '{s+=$3} END{print s}' data.tsv
+3. Filter rows:          awk '$4>100 && /SUCCESS/' log.csv
+4. CSV → pretty table:   awk -F, '{printf "%-15s %5d\n",$1,$2}' sales.csv
+5. Average & stats:      awk '{x+=$1;n++} END{print x/n}' temps.txt
+6. Unique counts:        awk '{c[$1]++} END{for(k in c)print k,c[k]}' list
+7. Re-order fields:      awk -F: '{print $3":"$1}' /etc/passwd
+8. Add derived column:   awk '{print $0,$2*$3}' OFS=, prices.tsv
+9. Log status summary:   awk '{c[$9]++} END{for(s in c)print s,c[s]}' access
+10. Delete columns:      awk '{$3="";$5="";print}' OFS=, data.csv
+11. Multi-file tally:    awk '{s[FILENAME]+=$2} END{for(f in s)print f,s[f]}' *.txt
+12. Inline edit (in-place): awk '{gsub(/foo/,"bar")}1' file > tmp && mv tmp file
+13. Field math with var: awk -v t=42 '$2>t{print $1,$2}' scores
+14. Parse JSONish:       awk -F":" '/"id"/{gsub(/[", ]/,"",$2);print $2}' *.json
+15. Monitor CPU (%) live: mpstat 1 | awk '/all/ {print $4 "% idle"}'
+16. Build histogram:     awk '{a[int($1/10)]++} END{for(i in a)print i*10,a[i]}' nums
+17. Join replacement:    awk 'NR==FNR{m[$1]=$2;next}{$2=m[$1]}1' map.txt data.txt
+18. Blank-line sectioning: awk 'NF{print;next}{print "----"}' md.txt
+19. Generate HTML rows:  awk -F, '{printf "<tr><td>%s</td><td>%s</td></tr>\n",$1,$2}' db
+20. CLI calculator:      echo 3 5 + | awk '{print $1 $3 $2}' | bc"
 export SED_HELP=""
