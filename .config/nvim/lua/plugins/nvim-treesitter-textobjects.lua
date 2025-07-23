@@ -3,7 +3,7 @@ local M = {}
 
 function M.setup()
   -- configure textobjects via nvim-treesitter
-  require('nvim-treesitter.configs').setup {
+  require('plugins.nvim-treesitter').setup({
     textobjects = {
       select = {
         -- Automatically jump forward to textobj, similar to targets.vim
@@ -36,7 +36,7 @@ function M.setup()
         set_jumps = true,
       },
     },
-  }
+  })
 
   -- keymaps
   -- Text objects: select

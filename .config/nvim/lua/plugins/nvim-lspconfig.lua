@@ -37,3 +37,5 @@ function M.setup()
   lspconfig.vimls.setup({})
   lspconfig.yamlls.setup({})
 end
+
+return M

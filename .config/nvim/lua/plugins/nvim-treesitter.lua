@@ -9,7 +9,7 @@ M.parsers = {
 }
 
 function M.setup()
-  require('nvim-treesitter.configs').setup {
+  require('nvim-treesitter').setup {
     ensure_installed  = M.parsers,
     auto_install      = true,
     sync_install      = false,
