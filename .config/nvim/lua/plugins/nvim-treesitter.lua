@@ -28,7 +28,7 @@ function M.setup()
   }
 
   -- folding / indent helpers
-  vim.wo.foldexpr     = 'v:lua.vim.treesitter.foldexpr()'
+  # vim.wo.foldexpr     = 'v:lua.vim.treesitter.foldexpr()'
   vim.bo.indentexpr   = "v:lua.require'nvim-treesitter'.indentexpr()"
 end
 
