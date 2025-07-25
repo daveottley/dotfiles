@@ -69,6 +69,7 @@ alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 # alias pip='pip3'                 # Use pip3 by default
 # alias serve='python -m http.server 8000' # Start a local HTTP server
 alias venv='python -m venv .venv'     # Shortcut for creating virtual environments
+alias activate='source .venv/bin/activate' # Activate the current venv
 alias live-server='npm live-server .' 
 
 # Other / General Purpose
