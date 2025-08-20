@@ -13,6 +13,9 @@ export GPT_HOME="/home/$(whoami)/github/cligpt"
 export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-software-java-modules"
 export DOT_HOME="/home/$(whoami)/github/dotfiles"
 
+# Autoclicker
+export YDOTOOL_SOCKET="/tmp/.ydotool_socket"
+
 # HELP AND USAGE DOCS
 export RG_HELP="$(cat << 'EOF'
 Top 20 ripgrep (rg) workflows, roughly most-to-least useful:
