@@ -42,3 +42,4 @@ zshaddhistory() {
   [[ $1 == 'gpt '* ]] && return 1   # veto gpt entries
   return 0						              # accept everything else
 }
+export PATH="$HOME/.local/share/Steam/steamapps/common/Aseprite:$PATH"
