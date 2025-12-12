@@ -13,6 +13,8 @@ export GPT_HOME="/home/$(whoami)/github/cligpt"
 export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-software-java-modules"
 export DOT_HOME="/home/$(whoami)/github/dotfiles"
 
+export PATH="$HOME/.local/share/Steam/steamapps/common/Aseprite:$PATH"
+
 # Autoclicker
 # export YDOTOOL_SOCKET="/tmp/.ydotool_socket"
 
