@@ -17,7 +17,7 @@ function M.setup()
       'fish_lsp',
       'gopls',
       'html',
-      'java_language_server',
+      'jdtls',
       'jinja_lsp',
       'jsonls',
       'julials',
