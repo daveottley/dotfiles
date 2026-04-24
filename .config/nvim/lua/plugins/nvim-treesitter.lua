@@ -30,6 +30,16 @@ function M.setup()
   -- folding / indent helpers
   vim.wo.foldexpr     = 'v:lua.vim.treesitter.foldexpr()'
   vim.bo.indentexpr   = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+  --- Highlighting
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = '*',
+    callback = function(ev) 
+      -- pcall avoids an error if no parser is installed for this filetype
+      pcall(vim.treesitter.start, ev.buf)
+    end,
+  })
+  
 end
 
 return M
