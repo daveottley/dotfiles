@@ -2,7 +2,8 @@ local M = {}
 
 function M.setup()
   require('mason').setup()
-  require('mason-lspconfig').setup {
+
+  require('mason-lspconfig').setup({
     ensure_installed = {
       'ansiblels','asm_lsp','awk_ls','bashls','clangd','cmake',
       'csharp_ls','cssls','css_variables','cssmodules_ls','fish_lsp',
@@ -11,7 +12,7 @@ function M.setup()
       'pylsp','sqls','systemd_ls','ts_ls','vimls','yamlls',
     },
     automatic_installation = true,
-  }
+  })
 end
 
 return M
