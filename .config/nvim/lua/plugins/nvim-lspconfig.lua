@@ -1,41 +1,48 @@
 local M = {}
 
 function M.setup()
-  local lspconfig = require("lspconfig")
-  lspconfig.clangd.setup({})
-  lspconfig.ansiblels.setup({})
-  lspconfig.asm_lsp.setup({})
-  lspconfig.awk_ls.setup({})
-  lspconfig.bashls.setup({})
-  lspconfig.cmake.setup({})
-  lspconfig.cssls.setup({})
-  lspconfig.css_variables.setup({})
-  lspconfig.cssmodules_ls.setup({})
-  lspconfig.html.setup({})
-  lspconfig.java_language_server.setup({})
-  lspconfig.jinja_lsp.setup({})
-  lspconfig.jsonls.setup({})
-  lspconfig.julials.setup({})
-  lspconfig.lua_ls.setup({
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = {"vim"},    -- stop "undefined global" warnings
-        },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false, --remove annoying prompt
+  local servers = {
+    ansiblels = {},
+    asm_lsp = {},
+    awk_ls = {},
+    bashls = {},
+    clangd = {},
+    cmake = {},
+    css_variables = {},
+    cssls = {},
+    cssmodules_ls = {},
+    html = {},
+    java_language_server = {},
+    jinja_lsp = {},
+    jsonls = {},
+    julials = {},
+    markdown_oxide = {},
+    nginx_language_server = {},
+    pylsp = {},
+    systemd_ls = {},
+    ts_ls = {},
+    vimls = {},
+    yamlls = {},
+
+    lua_ls = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
+          },
         },
       },
     },
-  })
-  lspconfig.markdown_oxide.setup({})
-  lspconfig.nginx_language_server.setup({})
-  lspconfig.pylsp.setup({})
-  lspconfig.systemd_ls.setup({})
-  lspconfig.ts_ls.setup({})
-  lspconfig.vimls.setup({})
-  lspconfig.yamlls.setup({})
+  }
+
+  for name, config in pairs(servers) do
+    vim.lsp.config(name, config)
+    vim.lsp.enable(name)
+  end
 end
 
 return M
