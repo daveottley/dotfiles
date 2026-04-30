@@ -10,6 +10,7 @@ typeset -gix export HISTORY_COMMAND_MAX_LENGTH=120
 git config --global core.pager "$PAGER"
 
 export GPT_HOME="/home/$(whoami)/github/cligpt"
+export PIP_CACHE_DIR="$GPT_HOME/.pip-cache"
 export TBMSG_HOME="/home/$(whoami)/github/RobertElderSoftware/robert-elder-software-java-modules"
 export DOT_HOME="/home/$(whoami)/github/dotfiles"
 
