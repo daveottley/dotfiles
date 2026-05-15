@@ -15,6 +15,7 @@ function M.setup()
     -- Treesitter core
     {
       'nvim-treesitter/nvim-treesitter',
+      branch = 'main',
       build  = ':TSUpdate',
       lazy   = false,
       config = function() 
@@ -24,6 +25,7 @@ function M.setup()
     -- Treesitter - textobjects
     {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = 'main',
       lazy = false,
       dependencies = { 'nvim-treesitter/nvim-treesitter' },
       config = function()

@@ -2,8 +2,7 @@
 local M = {}
 
 function M.setup()
-  -- configure textobjects via nvim-treesitter
-  require('plugins.nvim-treesitter').setup({
+  require('nvim-treesitter-textobjects').setup({
     textobjects = {
       select = {
         -- Automatically jump forward to textobj, similar to targets.vim
