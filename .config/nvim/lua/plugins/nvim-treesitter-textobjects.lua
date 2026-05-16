@@ -2,10 +2,7 @@
 local M = {}
 
 function M.setup()
-<<<<<<< HEAD
-=======
   -- configure textobjects via nvim-treesitter
->>>>>>> 6fbd414 (Edit .zsh_aliases)
   require('nvim-treesitter-textobjects').setup({
     textobjects = {
       select = {
