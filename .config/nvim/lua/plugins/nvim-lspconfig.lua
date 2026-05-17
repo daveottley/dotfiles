@@ -2,27 +2,35 @@ local M = {}
 
 function M.setup()
   local servers = {
-    ansiblels = {},
+    ansiblels = {
+      filetypes = { "yaml" },
+    },
     asm_lsp = {},
     awk_ls = {},
     bashls = {},
     clangd = {},
-    cmake = {},
+    csharp_ls = {},
     css_variables = {},
     cssls = {},
     cssmodules_ls = {},
     html = {},
-    java_language_server = {},
     jinja_lsp = {},
     jsonls = {},
     julials = {},
     markdown_oxide = {},
-    nginx_language_server = {},
     pylsp = {},
+    gopls = {
+      filetypes = { "go", "gomod", "gowork" },
+    },
+    sqls = {},
     systemd_ls = {},
-    ts_ls = {},
+    ts_ls = {
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    },
     vimls = {},
-    yamlls = {},
+    yamlls = {
+      filetypes = { "yaml" },
+    },
 
     lua_ls = {
       settings = {
