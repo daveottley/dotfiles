@@ -21,12 +21,48 @@ alias gpt-context="view $GPT_HOME/context.txt"
 # General files: Edit and push to github
 alias todo="cd ~/github/notes; git pull; $EDITOR ~/todo.md; git add .; git commit -m 'Edit todo items'; git push; cd -"
 
-# .zsh files: Pull, edit, and push to github
-alias rc="cd ~/github/dotfiles; git pull; $EDITOR .zshrc; git add .; git commit -m 'Edit .zshrc'; git push; cd -"
-alias aliases="cd ~/github/dotfiles; git pull; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
-alias exports="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_exports; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
+# .zsh files: pull, edit, and push to GitHub
+#
+# These were aliases joined with semicolons, so a failed `git pull` still
+# opened the editor and committed whatever happened to be staged. Keep the
+# convenience commands, but stop immediately on a Git/editor failure and only
+# commit the file that was edited.
+unalias rc zshrc aliases exports func 2>/dev/null
+
+_dotfiles_edit() {
+  local dotfiles_dir="$HOME/github/dotfiles"
+  local file="$1"
+  local message="$2"
+  local editor="${EDITOR:-nvim}"
+
+  if [[ ! -d "$dotfiles_dir/.git" ]]; then
+    print -u2 -- "Dotfiles repository not found: $dotfiles_dir"
+    return 1
+  fi
+
+  # Autostash lets these commands publish an edit that was made before the
+  # helper was run, without failing because the working tree is dirty.
+  git -C "$dotfiles_dir" pull --rebase --autostash || return
+  "$editor" "$dotfiles_dir/$file" || return
+
+  git -C "$dotfiles_dir" add -- "$file" || return
+  if git -C "$dotfiles_dir" diff --cached --quiet -- "$file"; then
+    print -- "No changes to $file."
+    return 0
+  fi
+
+  # --only prevents unrelated staged dotfile changes from being included.
+  git -C "$dotfiles_dir" commit --only -m "$message" -- "$file" || return
+  git -C "$dotfiles_dir" push
+}
+
+zshrc() { _dotfiles_edit .zshrc 'Edit .zshrc'; }
+rc() { zshrc; }
+aliases() { _dotfiles_edit .zsh_aliases 'Edit .zsh_aliases'; }
+exports() { _dotfiles_edit .zsh_exports 'Edit .zsh_exports'; }
+func() { _dotfiles_edit .zsh_functions 'Edit .zsh_functions'; }
+
 alias secrets="$EDITOR ~/.zsh_secrets"
-alias func="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_functions; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
 alias zreload="source ~/.zshrc"
 
 # File and Directory Management
