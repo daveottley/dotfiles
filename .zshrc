@@ -20,6 +20,10 @@ source /usr/share/cachyos-zsh-config/cachyos-config.zsh
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_secrets ]] && source ~/.zsh_secrets
 
+# Prefer user-installed commands over system-wide packages.
+path=("$HOME/.local/bin" ${path:#$HOME/.local/bin})
+export PATH
+
 # Add user functions to the top of fpath. This ensures that user functions
 # always take priority over system or plugin-defined ones.
 fpath=(~/.zsh_functions $fpath)
