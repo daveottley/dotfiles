@@ -23,7 +23,7 @@ alias todo="cd ~/github/notes; git pull; $EDITOR ~/todo.md; git add .; git commi
 
 # .zsh files: Pull, edit, and push to github
 alias rc="cd ~/github/dotfiles; git pull; $EDITOR .zshrc; git add .; git commit -m 'Edit .zshrc'; git push; cd -"
-alias als="cd ~/github/dotfiles; git pull; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
+alias aliases="cd ~/github/dotfiles; git pull; $EDITOR .zsh_aliases; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
 alias exports="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_exports; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
 alias secrets="$EDITOR ~/.zsh_secrets"
 alias func="cd ~/github/dotfiles; git pull; $EDITOR ~/.zsh_functions; git add .; git commit -m 'Edit .zsh_aliases'; git push; cd -"
